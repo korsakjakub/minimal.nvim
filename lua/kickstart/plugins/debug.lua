@@ -20,6 +20,7 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+
   },
   config = function()
     local dap = require 'dap'
@@ -29,6 +30,7 @@ return {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
       automatic_setup = true,
+      automatic_installation = true,
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
@@ -39,6 +41,8 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        --      'java-debug',
+        --      'vscode-java-test',
       },
     }
 
@@ -60,6 +64,7 @@ return {
       --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
+        enabled = true,
         icons = {
           pause = '⏸',
           play = '▶',
@@ -73,6 +78,18 @@ return {
         },
       },
     }
+
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+      dapui.open()
+    end
+    dap.listeners.after.event_terminated["dapui_config"] = function()
+      dapui.close()
+    end
+    dap.listeners.after.event_exited["dapui_config"] = function()
+      dapui.close()
+    end
+
+    require('nvim-dap-virtual-text').setup()
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
