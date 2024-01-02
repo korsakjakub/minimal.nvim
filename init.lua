@@ -259,6 +259,10 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
+-- Base64 the selection
+vim.keymap.set('v', '<leader>b64', 'c<c-r>=system("base64 --decode", @")<cr><esc>')
+vim.keymap.set('v', '<leader>B64', 'c<c-r>=system("base64 -w 0", @")<cr><esc>')
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
