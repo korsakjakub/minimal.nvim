@@ -46,6 +46,8 @@ require('lazy').setup({
       require("copilot_cmp").setup()
     end
   },
+  'sindrets/diffview.nvim',
+  'jvirtanen/vim-hcl',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -288,8 +290,8 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- Base64 the selection
-vim.keymap.set('v', '<leader>b64', 'c<c-r>=system("base64 --decode", @")<cr><esc>')
-vim.keymap.set('v', '<leader>B64', 'c<c-r>=system("base64 -w 0", @")<cr><esc>')
+vim.keymap.set('v', '<leader>64d', 'c<c-r>=system("base64 --decode", @")<cr><esc>')
+vim.keymap.set('v', '<leader>64e', 'c<c-r>=system("base64 -w 0", @")<cr><esc>')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
