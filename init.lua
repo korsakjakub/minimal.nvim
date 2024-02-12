@@ -2,6 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -292,6 +293,12 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- Base64 the selection
 vim.keymap.set('v', '<leader>64d', 'c<c-r>=system("base64 --decode", @")<cr><esc>')
 vim.keymap.set('v', '<leader>64e', 'c<c-r>=system("base64 -w 0", @")<cr><esc>')
+
+-- Terminal in a split
+vim.keymap.set('n', '<leader>tl', '<C-w>v<C-w>l:term<cr>i')
+vim.keymap.set('n', '<leader>th', '<C-w>v<C-w>h:term<cr>i')
+vim.keymap.set('n', '<leader>tk', '<C-w>s<C-w>k:term<cr>i')
+vim.keymap.set('n', '<leader>tj', '<C-w>s<C-w>j:term<cr>i')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
