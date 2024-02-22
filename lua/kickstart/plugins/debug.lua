@@ -21,6 +21,7 @@ return {
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
 
+    'mfussenegger/nvim-dap-python'
   },
   config = function()
     local dap = require 'dap'
@@ -41,6 +42,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'debugpy',
         --      'java-debug',
         --      'vscode-java-test',
       },
@@ -100,5 +102,6 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+    require('dap-python').setup()
   end,
 }
