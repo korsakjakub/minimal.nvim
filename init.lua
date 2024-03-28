@@ -281,10 +281,11 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- Base64 the selection
-vim.keymap.set('v', '<leader>64d', 'c<c-r>=system("base64 --decode", @")<cr><esc>')
+vim.keymap.set('v', '<leader>64d', 'c<c-r>=system("base64 -d", @")<cr><esc>')
 vim.keymap.set('v', '<leader>64e', 'c<c-r>=system("base64 -w 0", @")<cr><esc>')
 
 -- Terminal in a split
+vim.keymap.set('n', '<leader>tt', ':term<cr>i')
 vim.keymap.set('n', '<leader>tl', '<C-w>v<C-w>l:term<cr>i')
 vim.keymap.set('n', '<leader>th', '<C-w>v<C-w>h:term<cr>i')
 vim.keymap.set('n', '<leader>tk', '<C-w>s<C-w>k:term<cr>i')
